@@ -10,6 +10,7 @@
 		05354FA41FC62FCC00920005 /* m68k.h in Headers */ = {isa = PBXBuildFile; fileRef = DCA3579F1BC2C14E0094BB3F /* m68k.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0537EAAA1FC6284F00F06BF9 /* tms320c64x.h in Headers */ = {isa = PBXBuildFile; fileRef = 0537EAA91FC6284E00F06BF9 /* tms320c64x.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0537EAAC1FC6286300F06BF9 /* m680x.h in Headers */ = {isa = PBXBuildFile; fileRef = 0537EAAB1FC6286300F06BF9 /* m680x.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D671ED762A68358C000A20BC /* VMAArch64ExecutionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D671ED742A68358C000A20BC /* VMAArch64ExecutionEngine.cpp */; };
 		DC07A86E19F6061D00254FCF /* libcapstone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFE23BD19DDCC2D00EF8EA9 /* libcapstone.a */; };
 		DC3A28E31AF29C0100FC9913 /* test_customized_mnem.c in Sources */ = {isa = PBXBuildFile; fileRef = DC3A28E21AF29C0100FC9913 /* test_customized_mnem.c */; };
 		DC3A28E41AF29C4600FC9913 /* libcapstone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFE23BD19DDCC2D00EF8EA9 /* libcapstone.a */; };
@@ -325,9 +326,11 @@
 		05354FA51FC6305300920005 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		0537EAA91FC6284E00F06BF9 /* tms320c64x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tms320c64x.h; sourceTree = "<group>"; };
 		0537EAAB1FC6286300F06BF9 /* m680x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m680x.h; sourceTree = "<group>"; };
+		D671ED742A68358C000A20BC /* VMAArch64ExecutionEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VMAArch64ExecutionEngine.cpp; sourceTree = "<group>"; };
+		D671ED752A68358C000A20BC /* VMAArch64ExecutionEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VMAArch64ExecutionEngine.hpp; sourceTree = "<group>"; };
 		DC3A28DB1AF29BEB00FC9913 /* test_customized_mnem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test_customized_mnem; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC3A28E21AF29C0100FC9913 /* test_customized_mnem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test_customized_mnem.c; path = ../tests/test_customized_mnem.c; sourceTree = "<group>"; };
-		DC474E6419DDEA5F00BCA449 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC474E6419DDEA5F00BCA449 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = test; path = test_basic; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC474E6C19DDEA9500BCA449 /* test_arm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test_arm.c; path = ../tests/test_arm.c; sourceTree = "<group>"; };
 		DC474E6D19DDEA9500BCA449 /* test_arm64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test_arm64.c; path = ../tests/test_arm64.c; sourceTree = "<group>"; };
 		DC474E6E19DDEA9500BCA449 /* test_detail.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test_detail.c; path = ../tests/test_detail.c; sourceTree = "<group>"; };
@@ -648,6 +651,8 @@
 				DC474E7619DDEA9500BCA449 /* test_basic.c */,
 				DC474E6C19DDEA9500BCA449 /* test_arm.c */,
 				DC474E6D19DDEA9500BCA449 /* test_arm64.c */,
+				D671ED742A68358C000A20BC /* VMAArch64ExecutionEngine.cpp */,
+				D671ED752A68358C000A20BC /* VMAArch64ExecutionEngine.hpp */,
 				DC3A28E21AF29C0100FC9913 /* test_customized_mnem.c */,
 				DC474E6E19DDEA9500BCA449 /* test_detail.c */,
 				DC5BFF4819EE54BE008CA585 /* test_iter.c */,
@@ -1015,7 +1020,7 @@
 			productReference = DC3A28DB1AF29BEB00FC9913 /* test_customized_mnem */;
 			productType = "com.apple.product-type.tool";
 		};
-		DC474E6319DDEA5F00BCA449 /* test */ = {
+		DC474E6319DDEA5F00BCA449 /* test_basic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC474E6A19DDEA5F00BCA449 /* Build configuration list for PBXNativeTarget "test_basic" */;
 			buildPhases = (
@@ -1354,6 +1359,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DCFE239919DDCB4900EF8EA9;
@@ -1486,6 +1492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC474EF119DDEAED00BCA449 /* test_arm64.c in Sources */,
+				D671ED762A68358C000A20BC /* VMAArch64ExecutionEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3301,7 +3308,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DC474E6A19DDEA5F00BCA449 /* Build configuration list for PBXNativeTarget "test" */ = {
+		DC474E6A19DDEA5F00BCA449 /* Build configuration list for PBXNativeTarget "test_basic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC474E6819DDEA5F00BCA449 /* Debug */,

@@ -6,6 +6,7 @@
 
 #include <capstone/platform.h>
 #include <capstone/capstone.h>
+#include "VMAArch64ExecutionEngine.hpp"
 
 static csh handle;
 
@@ -254,6 +255,8 @@ static void test()
 			print_string_hex("Code: ", platforms[i].code, platforms[i].size);
 			printf("Disasm:\n");
 
+      VMAArch64ExecutionEngineVisitInsn(insn, count);
+      
 			for (j = 0; j < count; j++) {
 				printf("0x%" PRIx64 ":\t%s\t%s\n", insn[j].address, insn[j].mnemonic, insn[j].op_str);
 				print_insn_detail(&insn[j]);
