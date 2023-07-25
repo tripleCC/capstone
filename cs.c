@@ -911,7 +911,9 @@ size_t CAPSTONE_API cs_disasm(csh ud, const uint8_t *buffer, size_t size, uint64
 			// adjust for pseudo opcode (X86)
 			if (handle->arch == CS_ARCH_X86)
 				insn_cache->id += mci.popcode_adjust;
-
+      
+      insn_cache->mc_opcode = mci.Opcode;
+      
 			next_offset = insn_size;
 		} else	{
 			// encounter a broken instruction
@@ -953,7 +955,9 @@ size_t CAPSTONE_API cs_disasm(csh ud, const uint8_t *buffer, size_t size, uint64
 			skipdata_opstr(insn_cache->op_str, buffer, skipdata_bytes);
 #endif
 			insn_cache->detail = NULL;
-
+      
+      insn_cache->mc_opcode = CS_INVALID_MC_OPCODE;
+      
 			next_offset = skipdata_bytes;
 		}
 

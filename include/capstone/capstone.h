@@ -351,8 +351,12 @@ typedef struct cs_insn {
 	/// NOTE 2: when in Skipdata mode, or when detail mode is OFF, even if this pointer
 	///     is not NULL, its content is still irrelevant.
 	cs_detail *detail;
+  
+  // opcode is required for distinguishing specific operands
+  unsigned mc_opcode;
 } cs_insn;
 
+#define CS_INVALID_MC_OPCODE INT32_MAX
 
 /// Calculate the offset of a disassembled instruction in its buffer, given its position
 /// in its array of disassembled insn
